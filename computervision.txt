@@ -1,0 +1,96 @@
+1:  I chose mediapipe because of the following benefits:
+
+MediaPipe Pose has a pretrained, highly-accurate body-keypoint detector.
+No need to train any deep learning model yourself.
+It directly gives you:
+Shoulder landmarks
+Elbow landmarks
+Hip landmarks
+Wrist landmarks
+33 body points with high accuracy
+This saves weeks of training and testing ML models.
+
+2: The metrics computed were:
+Shoulder width change
+Arm angle
+
+3: Numeric results:
+
+Saved results to results.csv
+                     image  detected  shoulder_width_px  \
+0    /content/Picture3.jpg      True          68.183576   
+1    /content/picture4.jpg      True          51.419841   
+2    /content/Picture5.jpg      True          45.099889   
+3    /content/Picture6.jpg      True          57.218878   
+4    /content/Picture7.jpg      True          58.051701   
+5    /content/Picture8.jpg      True          63.285069   
+6    /content/Picture9.jpg      True          34.481879   
+7   /content/Picture10.jpg      True          47.381431   
+8  /content/Picture 11.jpg      True          25.961510   
+
+   shoulder_width_change_pct  left_arm_angle_deg  right_arm_angle_deg  
+0                   0.000000           26.523822            25.919777  
+1                 -24.586178           61.753205            43.406753  
+2                 -33.855201           69.412088            97.532601  
+3                 -16.081142           71.086900           154.863187  
+4                 -14.859700           95.389312           162.597296  
+5                  -7.184291           51.805580            19.136096  
+6                 -49.427881           24.477003             9.100616  
+7                 -30.509026          162.483542           107.783888  
+8                 -61.924100           88.221660            68.641383  
+
+4: Brief interpretation:
+
+The task involves building a pose-estimation based analysis system using MediaPipe where a user provides 10 images. For each image, the system:
+1. Detects Human Pose Landmarks
+Using MediaPipe Pose, the model identifies key joints such as:
+Shoulders (left & right)
+Elbows
+Wrists
+
+2. Measures Shoulder Width Changes
+
+For every image:
+
+The X–Y coordinates of the left and right shoulder landmarks are extracted.
+
+Euclidean distance formula is applied to compute shoulder width.
+
+By calculating widths across 10 images, you can:
+
+Compare width changes
+
+Spot posture variation
+
+Understand body rotation or camera-angle changes
+
+3. Computes Arm Angle
+
+The system calculates angles such as:
+
+Upper arm angle
+
+Forearm angle
+using geometric angle formulas between:
+
+Shoulder → Elbow → Wrist
+
+This helps in analyzing:
+
+Arm posture
+
+Range of motion
+
+Movement variations across images
+
+4. Produces Quantitative Results
+
+For each image, the output may include:
+
+Shoulder width value
+
+Arm angle value
+
+Differences between images
+
+A small interpretation (e.g., increased width may mean slight rotation)
